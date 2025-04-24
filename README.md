@@ -83,15 +83,136 @@ C. Vinculación de Datos
 
 ---
 
-PRÓXIMOS PASOS 
-1. Definir stack tecnológico:  
-   - ¿Kotlin Multiplatform o React Native?  
-   - ¿ONNX o TensorFlow Lite para Stable Diffusion?
-     
-2. Documentar APIs locales:  
-   - Ejemplo: Cómo llamar a Mistral 7B desde Kotlin.
-     
-3. Plan de pruebas:  
-   - Rendimiento en dispositivos de gama baja/alta.  
+**📚 Documentación Técnica: Lenguajes y Tecnologías**  
+
+ **1. Flutter (Dart) - Frontend Móvil**  
+**Descripción**:  
+Framework de desarrollo multiplataforma para crear interfaces móviles (iOS/Android) desde un solo código base.  
+
+**Uso en el Proyecto**:  
+- **Interfaz de usuario**: Pantallas para generación de imágenes, historial de contenido, ajustes.  
+- **Comunicación con Backend**: Consumo de APIs REST (`http` o `Dio`).  
+- **Gestión de estado**: Provider o Riverpod.  
+
+**Ejemplo (Dart)**:  
+```dart
+// Llamada API al backend
+Future<void> generateContent(String prompt) async {
+  final response = await http.post(
+    Uri.parse('https://api.digitallocal.com/generate'),
+    body: jsonEncode({'prompt': prompt}),
+  );
+  if (response.statusCode == 200) {
+    print('¡Contenido generado!');
+  }
+}
+```  
+
+**Recursos**:  
+- [Documentación Oficial](https://flutter.dev)  
+- [Paquetes Útiles](https://pub.dev): `http`, `sqflite`, `cached_network_image`.  
+
+---
+
+**2. Node.js + Express - Backend**  
+**Descripción**:  
+Entorno de ejecución JavaScript para construir APIs rápidas y escalables.  
+
+**Uso en el Proyecto**:  
+- **Endpoints REST**: Procesar solicitudes de generación de contenido.  
+- **Lógica de negocio**: Coordinar llamadas a IA (si se migra a la nube).  
+- **Autenticación**: JWT o Firebase Auth.  
+
+**Ejemplo (JavaScript)**:  
+```javascript
+const express = require('express');
+const app = express();
+
+app.post('/generate', (req, res) => {
+  const { prompt } = req.body;
+  // Lógica para generar contenido
+  res.json({ image: 'ruta/imagen.png', copy: 'Texto generado' });
+});
+
+app.listen(3000, () => console.log('Server running'));
+```  
+
+**Recursos**:  
+- [Documentación Express](https://expressjs.com)  
+- [Módulos Clave](https://www.npmjs.com): `cors`, `jsonwebtoken`, `axios`.  
+
+---
+ **3. SQLite - Base de Datos Local**  
+**Descripción**:  
+Motor de base de datos ligero y embebido, ideal para almacenamiento local en móviles.  
+
+**Uso en el Proyecto**:  
+- **Almacenar**: Chats, rutas de imágenes, metadatos.  
+- **Consultas rápidas**: Búsqueda por IDs, filtrado por fecha.  
+
+**Ejemplo (Kotlin con Android)**:  
+```kotlin
+// Crear tabla en SQLite
+db.execSQL("""
+    CREATE TABLE content (
+        id TEXT PRIMARY KEY,
+        chat_text TEXT,
+        image_path TEXT
+    )
+""")
+```  
+
+**Recursos**:  
+- [SQLite en Flutter](https://pub.dev/packages/sqflite)  
+- [SQLite en Node.js](https://www.npmjs.com/package/sqlite3) (si se usa en backend).  
+
+---
+
+**🔗 Integración entre Componentes**  
+```mermaid
+sequenceDiagram
+    Flutter->>+Node.js: POST /generate (prompt)
+    Node.js-->>-Flutter: {image_path, copy}
+    Flutter->>SQLite: Guardar (id, copy, image_path)
+    Flutter->>Almacenamiento: Guardar imagen en /images/{id}.png
+```  
+
+---
+
+ **⚙️ Requisitos de Instalación**  
+ **Flutter**:  
+```bash
+# Instalación básica
+$ git clone https://github.com/flutter/flutter.git
+$ export PATH="$PATH:`pwd`/flutter/bin"
+$ flutter doctor
+```  
+
+**Node.js**:  
+```bash
+# Instalación en Linux/macOS
+$ curl -fsSL https://deb.nodesource.com/setup_18.x | sudo -E bash -
+$ sudo apt-get install -y nodejs
+```  
+
+ **SQLite en Flutter**:  
+```yaml
+# pubspec.yaml
+dependencies:
+  sqflite: ^2.3.0
+  path_provider: ^2.1.1
+```  
+
+---
+
+ **📌 Notas Clave**  
+1. **Flutter y Node.js se comunican via HTTP/HTTPS**.  
+2. **SQLite es solo para almacenamiento local** (no requiere servidor).  
+3. **Para escalar**, puedes reemplazar SQLite por Firebase o PostgreSQL en el futuro.  
+
+
+**Documentación adicional**:  
+- [Flutter + Node.js Tutorial](https://medium.com/swlh/flutter-with-node-js-backend-99ffb9b8b437)  
+- [SQLite Best Practices](https://www.sqlite.org/docs.html) 
 
 
