@@ -208,7 +208,9 @@ dependencies:
  **📌 Notas Clave**  
 1. **Flutter y Node.js se comunican via HTTP/HTTPS**.  
 2. **SQLite es solo para almacenamiento local** (no requiere servidor).  
-3. **Para escalar**, puedes reemplazar SQLite por Firebase o PostgreSQL en el futuro.  
+3. **Para escalar**, puedes reemplazar SQLite por Firebase o PostgreSQL en el futuro.
+
+
 
 
 **Documentación adicional**:  
