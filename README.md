@@ -1,7 +1,4 @@
 # myAppCopy
-una aplicacion para general publicidad
-
-
 
 1. Objetivo 
 Desarrollar una aplicación móvil que:  
@@ -65,19 +62,20 @@ C. Vinculación de Datos
 
 ---
 
-5. Requisitos Técnicos  
-| **Área**          | **Detalle**                                                                 |  
-|-------------------|-----------------------------------------------------------------------------|  
-| **Plataforma**    | Android (Kotlin) + iOS (Swift) - Usaremos Kotlin Multiplatform para compartir lógica. |  
-| **RAM Mínima**    | 3GB (para inferencia de IA).                                                |  
-| **Almacenamiento**| 100MB libres (para modelos y caché).                                        |  
+5. Requisitos Técnicos
+   
+| **Área**                     | **Detalle**                                                                          |  
+|------------------------------|--------------------------------------------------------------------------------------|  
+| **Plataforma**               | Android (Kotlin) + iOS (Swift) - Usaremos Kotlin Multiplatform para compartir lógica.|  
+| **RAM Mínima**               | 3GB (para inferencia de IA).                                                         |  
+| **Almacenamiento**           | 100MB libres (para modelos y caché).                                                 |  
 
 ---
 
 
 6. Limitaciones y Soluciones
      
-| **Limitación**               | **Mitigación**                              |  
+| **Limitación**               | **Mitigación**                             |  
 |------------------------------|--------------------------------------------|  
 | Inferencia lenta en móviles  | Usar modelos cuantizados (ej.: GGUF).      |  
 | Espacio en disco             | Compresión WebP + limpieza automática.     |  
