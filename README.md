@@ -217,4 +217,12 @@ dependencies:
 - [Flutter + Node.js Tutorial](https://medium.com/swlh/flutter-with-node-js-backend-99ffb9b8b437)  
 - [SQLite Best Practices](https://www.sqlite.org/docs.html) 
 
+**Flujo de tabajo entre los componentes**
+graph LR
+    A[Flutter UI] -->|HTTP POST| B[Backend Express]
+    B --> C[Generador de Imágenes]
+    C --> D[(storage/)]
+    B --> E[APIs Redes Sociales]
+    B --> F[(Base de Datos)]
+    E -->|Post ID| A
 
