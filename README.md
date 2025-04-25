@@ -217,8 +217,9 @@ dependencies:
 - [Flutter + Node.js Tutorial](https://medium.com/swlh/flutter-with-node-js-backend-99ffb9b8b437)  
 - [SQLite Best Practices](https://www.sqlite.org/docs.html) 
 
----
-**Flujo de tabajo entre los componentes**
+**La arquitectura pensada para este proyecto**: sera una arquitectura monolitica, para hacer pruebas, luego mas adelante sera una cambio a microservicios para mayor rendimiento.
+
+**Flujo de tabajo entre la base de datos y la pantalla del usuario**
 
 ```mermaid
 graph LR
