@@ -217,7 +217,10 @@ dependencies:
 - [Flutter + Node.js Tutorial](https://medium.com/swlh/flutter-with-node-js-backend-99ffb9b8b437)  
 - [SQLite Best Practices](https://www.sqlite.org/docs.html) 
 
+---
 **Flujo de tabajo entre los componentes**
+
+```mermaid
 graph LR
     A[Flutter UI] -->|HTTP POST| B[Backend Express]
     B --> C[Generador de Imágenes]
@@ -226,3 +229,4 @@ graph LR
     B --> F[(Base de Datos)]
     E -->|Post ID| A
 
+```
